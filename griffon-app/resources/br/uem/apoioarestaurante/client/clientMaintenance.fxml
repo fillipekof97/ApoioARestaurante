@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import griffon.javafx.support.JavaFXUtils?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="306.0"
+            prefWidth="609.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="br.uem.apoioarestaurante.client.ClientMaintenanceView">
+    <children>
+        <Label fx:id="nameLabel" layoutX="37.0" layoutY="75.0" prefHeight="25.0" prefWidth="58.0" text="Name"
+               wrapText="true"/>
+        <TextField fx:id="nameTextField" layoutX="97.0" layoutY="75.0" prefHeight="25.0" prefWidth="476.0"/>
+        <Label fx:id="cpfLabel" layoutX="37.0" layoutY="130.0" prefHeight="25.0" prefWidth="58.0" text="CPF"
+               wrapText="true"/>
+        <TextField fx:id="cpfTextField" layoutX="96.0" layoutY="130.0" prefHeight="25.0" prefWidth="113.0"/>
+        <Label fx:id="birthDateLabel" layoutX="221.0" layoutY="124.0" prefHeight="38.0" prefWidth="58.0"
+               text="Birth Date" wrapText="true"/>
+        <DatePicker fx:id="birthDateDataPicker" layoutX="286.0" layoutY="131.0" prefHeight="25.0" prefWidth="132.0"/>
+        <Label fx:id="phoneLabel" layoutX="439.0" layoutY="131.0" prefHeight="25.0" prefWidth="36.0" text="Phone"
+               wrapText="true"/>
+        <TextField fx:id="phoneTextField" layoutX="482.0" layoutY="131.0" prefHeight="25.0" prefWidth="89.0"/>
+        <Label fx:id="addressLabel" layoutX="37.0" layoutY="183.0" prefHeight="25.0" prefWidth="58.0" text="Address"
+               wrapText="true"/>
+        <TextField fx:id="addressTextField" layoutX="97.0" layoutY="183.0" prefHeight="25.0" prefWidth="476.0"/>
+        <Button fx:id="cancelActionTarget" layoutX="519.0" layoutY="245.0" mnemonicParsing="false" text="Cancel"
+                JavaFXUtils.i18nKey="ApoioARestaurante.ClientMaintenance.Cancel.Button"/>
+        <Button fx:id="saveActionTarget" layoutX="455.0" layoutY="245.0" mnemonicParsing="false" text="Save"
+                JavaFXUtils.i18nKey="ApoioARestaurante.ClientMaintenance.Save.Button"/>
+    </children>
+</AnchorPane>

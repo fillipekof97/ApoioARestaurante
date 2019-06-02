@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import griffon.javafx.support.JavaFXUtils?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+            prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="br.uem.apoioarestaurante.mainpage.MainPageView">
+    <children>
+        <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="800.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="Manage"
+                      JavaFXUtils.i18nKey="ApoioARestaurante.MainPage.Manage.Menu">
+                    <items>
+                        <MenuItem fx:id="clientActionTarget" mnemonicParsing="false" text="Client"
+                                  JavaFXUtils.i18nKey="ApoioARestaurante.MainPage.Client.MenuItem"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Orders"
+                      JavaFXUtils.i18nKey="ApoioARestaurante.MainPage.Orders.Menu">
+                    <items>
+                        <MenuItem fx:id="orderActionTarget" mnemonicParsing="false" text="Order"
+                                  JavaFXUtils.i18nKey="ApoioARestaurante.MainPage.Order.MenuItem"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </children>
+</AnchorPane>
