@@ -3,13 +3,15 @@ package br.uem.apoioarestaurante.client;
 import br.uem.apoioarestaurante.util.MVCGroupUtil;
 import griffon.core.artifact.GriffonController;
 import griffon.core.controller.ControllerAction;
-import griffon.core.mvc.MVCGroup;
 import griffon.inject.MVCMember;
 import griffon.metadata.ArtifactProviderFor;
 import griffon.transform.Threading;
 import org.codehaus.griffon.runtime.core.artifact.AbstractGriffonController;
 
 import javax.annotation.Nonnull;
+import java.util.Map;
+
+import static griffon.util.CollectionUtils.map;
 
 /**
  * @author Maicon
@@ -23,7 +25,6 @@ public class ClientController extends AbstractGriffonController {
         this.model = model;
     }
 
-
     @ControllerAction
     @Threading(Threading.Policy.INSIDE_UITHREAD_ASYNC)
     public void search() {
@@ -33,14 +34,12 @@ public class ClientController extends AbstractGriffonController {
     @ControllerAction
     @Threading(Threading.Policy.INSIDE_UITHREAD_ASYNC)
     public void newClient() {
-        MVCGroup clientMainetenanceGroup = application.getMvcGroupManager().findGroup(MVCGroupUtil.CLIENT_MAINTENANCE_CREATE);
-
-        if (clientMainetenanceGroup != null) {
-            clientMainetenanceGroup.destroy();
-        }
-
         try {
-            application.getMvcGroupManager().findConfiguration(MVCGroupUtil.CLIENT_MAINTENANCE_CONFIG_ID).create(MVCGroupUtil.CLIENT_MAINTENANCE_CREATE);
+            application.getMvcGroupManager()
+                    .createMVC(MVCGroupUtil.CLIENT_MAINTENANCE_CONFIG_ID,
+                            MVCGroupUtil.CLIENT_MAINTENANCE_CREATE,
+                            (Map) map().e("model", getMvcGroup().getModel()));
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -49,16 +48,11 @@ public class ClientController extends AbstractGriffonController {
     @ControllerAction
     @Threading(Threading.Policy.INSIDE_UITHREAD_ASYNC)
     public void updateClient() {
-        MVCGroup clientMainetenanceGroup = application.getMvcGroupManager()
-                .findGroup(MVCGroupUtil.CLIENT_MAINTENANCE_UPDATE);
-
-        if (clientMainetenanceGroup != null) {
-            clientMainetenanceGroup.destroy();
-        }
-
         try {
-            application.getMvcGroupManager().findConfiguration(MVCGroupUtil.CLIENT_MAINTENANCE_CONFIG_ID)
-                    .create(MVCGroupUtil.CLIENT_MAINTENANCE_UPDATE);
+            application.getMvcGroupManager()
+                    .createMVC(MVCGroupUtil.CLIENT_MAINTENANCE_CONFIG_ID,
+                            MVCGroupUtil.CLIENT_MAINTENANCE_UPDATE,
+                            (Map) map().e("model", getMvcGroup().getModel()));
         } catch (Exception ex) {
             ex.printStackTrace();
         }

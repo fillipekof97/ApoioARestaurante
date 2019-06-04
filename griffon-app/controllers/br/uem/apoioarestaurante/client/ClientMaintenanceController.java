@@ -4,6 +4,7 @@ import br.uem.apoioarestaurante.util.MVCGroupUtil;
 import br.uem.apoioarestaurante.util.WindowUtil;
 import griffon.core.artifact.GriffonController;
 import griffon.core.controller.ControllerAction;
+import griffon.inject.MVCMember;
 import griffon.metadata.ArtifactProviderFor;
 import griffon.transform.Threading;
 import org.codehaus.griffon.runtime.core.artifact.AbstractGriffonController;
@@ -18,16 +19,9 @@ import java.util.Map;
 public class ClientMaintenanceController extends AbstractGriffonController {
     private ClientModel model;
 
-    public void setModel() {
-        this.model = (ClientModel) getApplication().getMvcGroupManager().findGroup(MVCGroupUtil.CLIENT_MAIN).getModel();
-    }
-
-    public ClientModel getModel() {
-        if (model == null) {
-            setModel();
-        }
-
-        return model;
+    @MVCMember
+    public void setModel(@Nonnull ClientModel model) {
+        this.model = model;
     }
 
     @Override
@@ -35,29 +29,29 @@ public class ClientMaintenanceController extends AbstractGriffonController {
         super.mvcGroupInit(args);
 
         if (getMvcGroup().getMvcId().equals(MVCGroupUtil.CLIENT_MAINTENANCE_UPDATE)) {
-            getModel().setClientValues();
+            model.setClientValues();
         }
     }
 
     @ControllerAction
     @Threading(Threading.Policy.INSIDE_UITHREAD_ASYNC)
     public void save() {
-        application.getWindowManager().hide(WindowUtil.CLIENT_MAINTENANCE);
-
-        if (getApplication().getMvcGroupManager()
+        if (application.getMvcGroupManager()
                 .findGroup(MVCGroupUtil.CLIENT_MAINTENANCE_CREATE) != null) {
-            getModel().register();
+            model.register();
         } else if (getApplication().getMvcGroupManager()
                 .findGroup(MVCGroupUtil.CLIENT_MAINTENANCE_UPDATE) != null) {
-            getModel().update();
+            model.update();
         }
+
+        getMvcGroup().destroy();
+        application.getWindowManager().hide(WindowUtil.CLIENT_MAINTENANCE);
     }
 
     @ControllerAction
     @Threading(Threading.Policy.INSIDE_UITHREAD_ASYNC)
     public void cancel() {
         getMvcGroup().destroy();
-        getApplication().getWindowManager().hide(WindowUtil.CLIENT_MAINTENANCE);
-//        application.getWindowManager().show(WindowUtil.CLIENT);
+        application.getWindowManager().hide(WindowUtil.CLIENT_MAINTENANCE);
     }
 }

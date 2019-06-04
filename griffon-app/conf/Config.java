@@ -28,6 +28,7 @@ public class Config extends AbstractMapResourceBundle {
                                 .e("controller", "br.uem.apoioarestaurante.client.ClientController")
                         )
                         .e(MVCGroupUtil.CLIENT_MAINTENANCE_CONFIG_ID, map()
+                                .e("model", "br.uem.apoioarestaurante.client.ClientModel")
                                 .e("view", "br.uem.apoioarestaurante.client.ClientMaintenanceView")
                                 .e("controller", "br.uem.apoioarestaurante.client.ClientMaintenanceController")
                         )

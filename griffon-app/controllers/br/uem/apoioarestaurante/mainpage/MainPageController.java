@@ -27,15 +27,15 @@ public class MainPageController extends AbstractGriffonController {
     @ControllerAction
     @Threading(Threading.Policy.INSIDE_UITHREAD_ASYNC)
     public void client() {
-        MVCGroup clientGroup = application.getMvcGroupManager().findGroup(MVCGroupUtil.CLIENT_MAIN);
-
-        if (clientGroup != null) {
-            clientGroup.destroy();
-        }
-
         try {
-            application.getMvcGroupManager().findConfiguration(MVCGroupUtil.CLIENT_CONFIG_ID).create(MVCGroupUtil.CLIENT_MAIN);
-            application.getWindowManager().hide(WindowUtil.MAIN_PAGE);
+            MVCGroup clientGroup = application.getMvcGroupManager()
+                    .findGroup(MVCGroupUtil.CLIENT);
+            if (clientGroup == null) {
+                application.getMvcGroupManager().createMVC(MVCGroupUtil.CLIENT_CONFIG_ID, MVCGroupUtil.CLIENT);
+                application.getWindowManager().hide(WindowUtil.MAIN_PAGE);
+            } else {
+                application.getWindowManager().show(WindowUtil.CLIENT);
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
