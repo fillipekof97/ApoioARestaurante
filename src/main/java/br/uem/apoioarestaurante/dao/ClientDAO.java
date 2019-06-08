@@ -10,18 +10,20 @@ import org.hibernate.Session;
  */
 @Singleton
 public class ClientDAO extends GenericDAO<Client> {
-    public Client findById(Long id) {
-        return super.findById(Client.class, id);
+
+    protected ClientDAO() {
+        super(Client.class);
     }
 
     public Client findByCpf(String cpf) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
         try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
             String query = "from " + Client.class.getSimpleName() + " c where c.cpf = " + cpf;
-            Client client = (Client) session.createQuery(query).getSingleResult();
-            return client;
+            return session.createQuery(query, Client.class).getSingleResult();
         } catch (RuntimeException rex) {
             rex.printStackTrace();
+        } finally {
+            session.close();
         }
         return null;
     }

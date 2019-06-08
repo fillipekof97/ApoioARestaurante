@@ -1,8 +1,11 @@
 package br.uem.apoioarestaurante.client;
 
 import br.uem.apoioarestaurante.util.MVCGroupUtil;
+import br.uem.apoioarestaurante.util.WindowUtil;
 import griffon.core.artifact.GriffonController;
 import griffon.core.controller.ControllerAction;
+import griffon.core.mvc.MVCGroup;
+import griffon.core.mvc.MVCGroupManager;
 import griffon.inject.MVCMember;
 import griffon.metadata.ArtifactProviderFor;
 import griffon.transform.Threading;
@@ -18,6 +21,7 @@ import static griffon.util.CollectionUtils.map;
  */
 @ArtifactProviderFor(GriffonController.class)
 public class ClientController extends AbstractGriffonController {
+
     private ClientModel model;
 
     @MVCMember
@@ -35,11 +39,19 @@ public class ClientController extends AbstractGriffonController {
     @Threading(Threading.Policy.INSIDE_UITHREAD_ASYNC)
     public void newClient() {
         try {
-            application.getMvcGroupManager()
-                    .createMVC(MVCGroupUtil.CLIENT_MAINTENANCE_CONFIG_ID,
-                            MVCGroupUtil.CLIENT_MAINTENANCE_CREATE,
-                            (Map) map().e("model", getMvcGroup().getModel()));
+            MVCGroupManager manager = application.getMvcGroupManager();
+            MVCGroup group = manager.findGroup(MVCGroupUtil.CLIENT_MAINTENANCE_CREATE);
 
+            if (group == null) {
+                manager.createMVC(MVCGroupUtil.CLIENT_MAINTENANCE_CONFIG_ID,
+                        MVCGroupUtil.CLIENT_MAINTENANCE_CREATE,
+                        (Map) map().e("model", getMvcGroup().getModel()));
+            } else {
+                group.destroy();
+                manager.createMVC(MVCGroupUtil.CLIENT_MAINTENANCE_CONFIG_ID,
+                        MVCGroupUtil.CLIENT_MAINTENANCE_CREATE,
+                        (Map) map().e("model", getMvcGroup().getModel()));
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -49,10 +61,20 @@ public class ClientController extends AbstractGriffonController {
     @Threading(Threading.Policy.INSIDE_UITHREAD_ASYNC)
     public void updateClient() {
         try {
-            application.getMvcGroupManager()
-                    .createMVC(MVCGroupUtil.CLIENT_MAINTENANCE_CONFIG_ID,
-                            MVCGroupUtil.CLIENT_MAINTENANCE_UPDATE,
-                            (Map) map().e("model", getMvcGroup().getModel()));
+            MVCGroupManager manager = application.getMvcGroupManager();
+            MVCGroup group = manager.findGroup(MVCGroupUtil.CLIENT_MAINTENANCE_UPDATE);
+
+            if (group == null) {
+                application.getMvcGroupManager()
+                        .createMVC(MVCGroupUtil.CLIENT_MAINTENANCE_CONFIG_ID,
+                                MVCGroupUtil.CLIENT_MAINTENANCE_UPDATE,
+                                (Map) map().e("model", getMvcGroup().getModel()));
+            } else {
+                group.destroy();
+                manager.createMVC(MVCGroupUtil.CLIENT_MAINTENANCE_CONFIG_ID,
+                        MVCGroupUtil.CLIENT_MAINTENANCE_UPDATE,
+                        (Map) map().e("model", getMvcGroup().getModel()));
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -62,5 +84,12 @@ public class ClientController extends AbstractGriffonController {
     @Threading(Threading.Policy.INSIDE_UITHREAD_ASYNC)
     public void deleteClient() {
         model.delete();
+    }
+
+    @ControllerAction
+    @Threading(Threading.Policy.INSIDE_UITHREAD_ASYNC)
+    public void back() {
+        application.getWindowManager().hide(WindowUtil.CLIENT);
+        application.getWindowManager().show(WindowUtil.MAIN_PAGE);
     }
 }

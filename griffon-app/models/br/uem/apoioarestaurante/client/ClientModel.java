@@ -19,7 +19,6 @@ import java.util.Date;
  */
 @ArtifactProviderFor(GriffonModel.class)
 public class ClientModel extends AbstractGriffonModel {
-
     @Inject
     private ClientDAO dao;
 
@@ -57,7 +56,7 @@ public class ClientModel extends AbstractGriffonModel {
 
     public void consult() {
         clients.get().clear();
-        clients.set(FXCollections.observableArrayList(dao.listAll(Client.class)));
+        clients.set(FXCollections.observableArrayList(dao.listAll()));
     }
 
     public void update() {

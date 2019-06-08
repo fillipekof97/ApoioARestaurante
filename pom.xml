@@ -18,8 +18,11 @@
         <application.main.class>br.uem.apoioarestaurante.Launcher</application.main.class>
         <application_name>${project.name}</application_name>
         <application_version>${project.version}</application_version>
+        <!--suppress UnresolvedMavenProperty -->
         <build_date>${git.build.time}</build_date>
+        <!--suppress UnresolvedMavenProperty -->
         <build_time>${git.build.time}</build_time>
+        <!--suppress UnresolvedMavenProperty -->
         <build_revision>${git.commit.id}</build_revision>
     </properties>
 
@@ -36,6 +39,18 @@
             </plugin>
         </plugins>
     </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.codehaus.griffon.plugins</groupId>
+                <artifactId>griffon-fontawesome-plugin</artifactId>
+                <version>1.4.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <!-- compile -->
@@ -86,6 +101,11 @@
             <artifactId>guice</artifactId>
             <version>4.2.0</version>
             <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.griffon.plugins</groupId>
+            <artifactId>griffon-fontawesome-javafx</artifactId>
         </dependency>
     </dependencies>
 

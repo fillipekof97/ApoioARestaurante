@@ -8,65 +8,71 @@ import java.util.List;
 
 public abstract class GenericDAO<T> {
 
+    private Class<T> entityClass;
+
+    protected GenericDAO(Class<T> entityClass) {
+        this.entityClass = entityClass;
+    }
+
     public T insert(T t) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
         try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
             Transaction transaction = session.beginTransaction();
             session.save(t);
             transaction.commit();
-        } catch (RuntimeException rex) {
-            rex.printStackTrace();
-            return null;
+            return t;
+        } finally {
+            session.close();
         }
-        return t;
     }
 
     public boolean update(T t) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
         try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
             Transaction transaction = session.beginTransaction();
             session.update(t);
             transaction.commit();
-        } catch (RuntimeException rex) {
-            rex.printStackTrace();
-            return false;
+            return true;
+        } finally {
+            session.close();
         }
-        return true;
     }
 
     public boolean delete(T t) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
         try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
             Transaction transaction = session.beginTransaction();
             session.delete(t);
             transaction.commit();
-        } catch (RuntimeException rex) {
-            rex.printStackTrace();
-            return false;
+            return true;
+        } finally {
+            session.close();
         }
-        return true;
     }
 
-    public List<T> listAll(Class<T> classe) {
-        try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            Transaction transaction = session.beginTransaction();
-            String query = "from " + classe.getSimpleName();
-            return session.createQuery(query).getResultList();
-        } catch (RuntimeException rex) {
-            rex.printStackTrace();
-        }
-        return null;
-    }
+    public T findById(Long id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
 
-    public T findById(Class<T> classe, Long id) {
         try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            T t = session.get(classe, id);
+            T t = session.get(entityClass, id);
             return t;
-        } catch (RuntimeException rex) {
-            rex.printStackTrace();
+        } finally {
+            session.close();
         }
-        return null;
+    }
+
+    public List<T> listAll() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            Transaction transaction = session.beginTransaction();
+            String query = "from " + entityClass.getSimpleName();
+            return session.createQuery(query, entityClass).getResultList();
+        } finally {
+            session.close();
+        }
     }
 }

@@ -155,3 +155,7 @@ if (hasProperty('debugRun') && ((project.debugRun as boolean))) {
 //        xml.destination = file("${buildDir}/reports/jacoco/root/root.xml")
 //    }
 //}
+
+dependencies {
+    compile 'org.codehaus.griffon.plugins:griffon-fontawesome-javafx:1.4.0'
+}
