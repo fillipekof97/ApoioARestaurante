@@ -32,6 +32,11 @@ public class Config extends AbstractMapResourceBundle {
                                 .e("view", "br.uem.apoioarestaurante.client.ClientMaintenanceView")
                                 .e("controller", "br.uem.apoioarestaurante.client.ClientMaintenanceController")
                         )
+                        .e(MVCGroupUtil.ORDER_CONFIG_ID, map()
+                                .e("model", "br.uem.apoioarestaurante.order.OrderModel")
+                                .e("view", "br.uem.apoioarestaurante.order.OrderView")
+                                .e("controller", "br.uem.apoioarestaurante.order.OrderController")
+                        )
                 );
     }
 }

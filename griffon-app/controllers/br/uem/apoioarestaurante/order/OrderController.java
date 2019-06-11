@@ -1,6 +1,5 @@
 package br.uem.apoioarestaurante.order;
 
-import br.uem.apoioarestaurante.client.ClientModel;
 import griffon.core.artifact.GriffonController;
 import griffon.inject.MVCMember;
 import griffon.metadata.ArtifactProviderFor;
@@ -13,10 +12,11 @@ import javax.annotation.Nonnull;
  */
 @ArtifactProviderFor(GriffonController.class)
 public class OrderController extends AbstractGriffonController {
-    private ClientModel model;
+
+    private OrderModel model;
 
     @MVCMember
-    public void setModel(@Nonnull ClientModel model) {
+    public void setModel(@Nonnull OrderModel model) {
         this.model = model;
     }
 }

@@ -1,7 +1,7 @@
 package br.uem.apoioarestaurante.client;
 
 import br.uem.apoioarestaurante.dao.ClientDAO;
-import br.uem.apoioarestaurante.entities.Client;
+import br.uem.apoioarestaurante.metadata.entities.Client;
 import griffon.core.artifact.GriffonModel;
 import griffon.metadata.ArtifactProviderFor;
 import javafx.beans.property.*;

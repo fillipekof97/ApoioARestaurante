@@ -40,16 +40,16 @@ public class ClientController extends AbstractGriffonController {
     public void newClient() {
         try {
             MVCGroupManager manager = application.getMvcGroupManager();
-            MVCGroup group = manager.findGroup(MVCGroupUtil.CLIENT_MAINTENANCE_CREATE);
+            MVCGroup group = manager.findGroup(MVCGroupUtil.CLIENT_MAINTENANCE_CREATE_NAME);
 
             if (group == null) {
                 manager.createMVC(MVCGroupUtil.CLIENT_MAINTENANCE_CONFIG_ID,
-                        MVCGroupUtil.CLIENT_MAINTENANCE_CREATE,
+                        MVCGroupUtil.CLIENT_MAINTENANCE_CREATE_NAME,
                         (Map) map().e("model", getMvcGroup().getModel()));
             } else {
                 group.destroy();
                 manager.createMVC(MVCGroupUtil.CLIENT_MAINTENANCE_CONFIG_ID,
-                        MVCGroupUtil.CLIENT_MAINTENANCE_CREATE,
+                        MVCGroupUtil.CLIENT_MAINTENANCE_CREATE_NAME,
                         (Map) map().e("model", getMvcGroup().getModel()));
             }
         } catch (Exception ex) {
@@ -62,17 +62,17 @@ public class ClientController extends AbstractGriffonController {
     public void updateClient() {
         try {
             MVCGroupManager manager = application.getMvcGroupManager();
-            MVCGroup group = manager.findGroup(MVCGroupUtil.CLIENT_MAINTENANCE_UPDATE);
+            MVCGroup group = manager.findGroup(MVCGroupUtil.CLIENT_MAINTENANCE_UPDATE_NAME);
 
             if (group == null) {
                 application.getMvcGroupManager()
                         .createMVC(MVCGroupUtil.CLIENT_MAINTENANCE_CONFIG_ID,
-                                MVCGroupUtil.CLIENT_MAINTENANCE_UPDATE,
+                                MVCGroupUtil.CLIENT_MAINTENANCE_UPDATE_NAME,
                                 (Map) map().e("model", getMvcGroup().getModel()));
             } else {
                 group.destroy();
                 manager.createMVC(MVCGroupUtil.CLIENT_MAINTENANCE_CONFIG_ID,
-                        MVCGroupUtil.CLIENT_MAINTENANCE_UPDATE,
+                        MVCGroupUtil.CLIENT_MAINTENANCE_UPDATE_NAME,
                         (Map) map().e("model", getMvcGroup().getModel()));
             }
         } catch (Exception ex) {

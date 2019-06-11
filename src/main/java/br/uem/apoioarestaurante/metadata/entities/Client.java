@@ -1,4 +1,4 @@
-package br.uem.apoioarestaurante.entities;
+package br.uem.apoioarestaurante.metadata.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

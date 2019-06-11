@@ -10,4 +10,5 @@ import org.codehaus.griffon.runtime.core.artifact.AbstractGriffonModel;
 @ArtifactProviderFor(GriffonModel.class)
 public class OrderModel extends AbstractGriffonModel {
 
+    
 }

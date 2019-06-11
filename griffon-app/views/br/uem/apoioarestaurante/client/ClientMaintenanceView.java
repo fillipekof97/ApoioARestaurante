@@ -65,7 +65,7 @@ public class ClientMaintenanceView extends AbstractJavaFXGriffonView {
     }
 
     public void setModel() {
-        this.model = (ClientModel) getApplication().getMvcGroupManager().findGroup(MVCGroupUtil.CLIENT).getModel();
+        this.model = (ClientModel) getApplication().getMvcGroupManager().findGroup(MVCGroupUtil.CLIENT_NAME).getModel();
     }
 
     @Override

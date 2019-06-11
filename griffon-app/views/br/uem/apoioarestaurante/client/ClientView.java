@@ -1,6 +1,6 @@
 package br.uem.apoioarestaurante.client;
 
-import br.uem.apoioarestaurante.entities.Client;
+import br.uem.apoioarestaurante.metadata.entities.Client;
 import br.uem.apoioarestaurante.util.WindowUtil;
 import griffon.core.artifact.GriffonView;
 import griffon.inject.MVCMember;

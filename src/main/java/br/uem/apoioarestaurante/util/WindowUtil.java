@@ -9,4 +9,6 @@ public class WindowUtil {
     public static final String CLIENT = "clientWindow";
 
     public static final String CLIENT_MAINTENANCE = "clientMainetenanceWindow";
+
+    public static final String ORDER = "orderWindow";
 }

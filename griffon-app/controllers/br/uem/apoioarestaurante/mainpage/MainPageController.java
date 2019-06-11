@@ -29,13 +29,13 @@ public class MainPageController extends AbstractGriffonController {
     public void client() {
         try {
             MVCGroup clientGroup = application.getMvcGroupManager()
-                    .findGroup(MVCGroupUtil.CLIENT);
+                    .findGroup(MVCGroupUtil.CLIENT_NAME);
             if (clientGroup == null) {
-                application.getMvcGroupManager().createMVC(MVCGroupUtil.CLIENT_CONFIG_ID, MVCGroupUtil.CLIENT);
-                application.getWindowManager().hide(WindowUtil.MAIN_PAGE);
+                application.getMvcGroupManager().createMVC(MVCGroupUtil.CLIENT_CONFIG_ID, MVCGroupUtil.CLIENT_NAME);
             } else {
                 application.getWindowManager().show(WindowUtil.CLIENT);
             }
+            application.getWindowManager().hide(WindowUtil.MAIN_PAGE);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -44,6 +44,17 @@ public class MainPageController extends AbstractGriffonController {
     @ControllerAction
     @Threading(Threading.Policy.INSIDE_UITHREAD_ASYNC)
     public void order() {
-//todo
+        try {
+            MVCGroup orderGroup = application.getMvcGroupManager()
+                    .findGroup(MVCGroupUtil.ORDER_NAME);
+            if (orderGroup == null) {
+                application.getMvcGroupManager().createMVC(MVCGroupUtil.ORDER_CONFIG_ID, MVCGroupUtil.ORDER_NAME);
+            } else {
+                application.getWindowManager().show(WindowUtil.ORDER);
+            }
+            application.getWindowManager().hide(WindowUtil.MAIN_PAGE);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }

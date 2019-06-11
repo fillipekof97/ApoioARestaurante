@@ -1,6 +1,6 @@
 package br.uem.apoioarestaurante.dao;
 
-import br.uem.apoioarestaurante.entities.Client;
+import br.uem.apoioarestaurante.metadata.entities.Client;
 import br.uem.apoioarestaurante.util.HibernateUtil;
 import com.google.inject.Singleton;
 import org.hibernate.Session;
