@@ -21,16 +21,16 @@
                        AnchorPane.leftAnchor="38.0"
                        JavaFXUtils.i18nKey="ApoioARestaurante.ClientMaintenance.CPF.Label"/>
                 <TextField fx:id="cpfTextField" layoutX="112.0" layoutY="97.0" prefHeight="25.0" prefWidth="140.0"/>
-                <Label fx:id="birthDateLabel" layoutX="265.0" layoutY="85.0" prefHeight="43.0" prefWidth="100.0"
+                <Label fx:id="birthDateLabel" layoutX="266.0" layoutY="85.0" prefHeight="43.0" prefWidth="100.0"
                        text="Birth Date" wrapText="true"
                        JavaFXUtils.i18nKey="ApoioARestaurante.ClientMaintenance.BirthDate.Label"/>
-                <DatePicker fx:id="birthDateDataPicker" layoutX="378.0" layoutY="97.0" prefHeight="25.0"
+                <DatePicker fx:id="birthDateDataPicker" layoutX="365.0" layoutY="97.0" prefHeight="25.0"
                             prefWidth="140.0"/>
-                <Label fx:id="phoneLabel" layoutX="529.0" layoutY="102.0" text="Phone" wrapText="true"
+                <Label fx:id="phoneLabel" layoutX="526.0" layoutY="102.0" text="Phone" wrapText="true"
                        JavaFXUtils.i18nKey="ApoioARestaurante.ClientMaintenance.Phone.Label"/>
                 <TextField fx:id="phoneTextField" layoutX="610.0" layoutY="98.0" prefHeight="25.0" prefWidth="140.0"
                            AnchorPane.rightAnchor="38.0"/>
-                <Label fx:id="addressLabel" layoutX="40.0" layoutY="175.0" text="Address" wrapText="true"
+                <Label fx:id="addressLabel" layoutX="47.0" layoutY="167.0" text="Address" wrapText="true"
                        AnchorPane.leftAnchor="38.0"
                        JavaFXUtils.i18nKey="ApoioARestaurante.ClientMaintenance.Address.Label"/>
                 <TextField fx:id="addressTextField" layoutX="112.0" layoutY="163.0" prefHeight="25.0" prefWidth="638.0"
