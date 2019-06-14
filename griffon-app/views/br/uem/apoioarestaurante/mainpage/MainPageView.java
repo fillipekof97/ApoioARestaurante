@@ -38,6 +38,9 @@ public class MainPageView extends AbstractJavaFXGriffonView {
         Stage stage = (Stage) getApplication()
                 .createApplicationContainer(Collections.<String, Object>emptyMap());
         stage.setTitle(getApplication().getConfiguration().getAsString("application.title"));
+        stage.setMinHeight(740);
+        stage.setMinWidth(1300);
+
         stage.setScene(init());
         stage.sizeToScene();
         getApplication().getWindowManager().attach(WindowUtil.MAIN_PAGE, stage);

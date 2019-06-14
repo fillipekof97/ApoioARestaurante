@@ -36,11 +36,11 @@ public class ClientMaintenanceController extends AbstractGriffonController {
     @ControllerAction
     @Threading(Threading.Policy.INSIDE_UITHREAD_ASYNC)
     public void save() {
-        if (application.getMvcGroupManager()
-                .findGroup(MVCGroupUtil.CLIENT_MAINTENANCE_CREATE_NAME) != null) {
+        if (getMvcGroup().getMvcId()
+                .equals(MVCGroupUtil.CLIENT_MAINTENANCE_CREATE_NAME)) {
             model.register();
-        } else if (getApplication().getMvcGroupManager()
-                .findGroup(MVCGroupUtil.CLIENT_MAINTENANCE_UPDATE_NAME) != null) {
+        } else if (getMvcGroup().getMvcId()
+                .equals(MVCGroupUtil.CLIENT_MAINTENANCE_UPDATE_NAME)) {
             model.update();
         }
 

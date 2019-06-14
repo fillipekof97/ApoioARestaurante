@@ -19,6 +19,7 @@ import java.util.Date;
  */
 @ArtifactProviderFor(GriffonModel.class)
 public class ClientModel extends AbstractGriffonModel {
+
     @Inject
     private ClientDAO dao;
 

@@ -64,6 +64,8 @@ public class ClientView extends AbstractJavaFXGriffonView {
                 .createApplicationContainer(Collections.<String, Object>emptyMap());
         stage.setTitle(getApplication().getConfiguration().getAsString("application.title"));
         stage.setScene(init());
+        stage.setMinHeight(740);
+        stage.setMinWidth(1300);
 
         stage.sizeToScene();
         getApplication().getWindowManager().attach(WindowUtil.CLIENT, stage);

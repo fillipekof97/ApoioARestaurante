@@ -1,6 +1,5 @@
 package br.uem.apoioarestaurante.client;
 
-import br.uem.apoioarestaurante.util.MVCGroupUtil;
 import br.uem.apoioarestaurante.util.WindowUtil;
 import griffon.core.artifact.GriffonView;
 import griffon.inject.MVCMember;
@@ -25,6 +24,7 @@ import java.util.Collections;
  */
 @ArtifactProviderFor(GriffonView.class)
 public class ClientMaintenanceView extends AbstractJavaFXGriffonView {
+
     @FXML
     private Label nameLabel;
 
@@ -64,19 +64,18 @@ public class ClientMaintenanceView extends AbstractJavaFXGriffonView {
         this.controller = controller;
     }
 
-    public void setModel() {
-        this.model = (ClientModel) getApplication().getMvcGroupManager().findGroup(MVCGroupUtil.CLIENT_NAME).getModel();
+    @MVCMember
+    public void setModel(@Nonnull ClientModel model) {
+        this.model = model;
     }
 
     @Override
     public void initUI() {
-        setModel();
-
         Stage stage = (Stage) getApplication()
                 .createApplicationContainer(Collections.<String, Object>emptyMap());
         stage.setTitle(getApplication().getConfiguration().getAsString("application.title"));
         stage.setScene(init());
-
+        stage.setResizable(false);
         stage.sizeToScene();
         getApplication().getWindowManager().attach(WindowUtil.CLIENT_MAINTENANCE, stage);
         stage.show();

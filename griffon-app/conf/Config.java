@@ -8,6 +8,7 @@ import static griffon.util.CollectionUtils.map;
 import static java.util.Arrays.asList;
 
 public class Config extends AbstractMapResourceBundle {
+    
     @Override
     protected void initialize(@Nonnull Map<String, Object> entries) {
         map(entries)
