@@ -21,83 +21,53 @@ import java.util.Collections;
  * @author Maicon
  */
 @ArtifactProviderFor(GriffonView.class)
-public class OrderView extends AbstractJavaFXGriffonView {
-
-    @FXML
-    private TableView<?> ordersTableView;
-
-    @FXML
-    private TableColumn<?, ?> idColumn;
-
-    @FXML
-    private TableColumn<?, ?> typeColumn;
-
-    @FXML
-    private TableColumn<?, ?> userColumn;
-
-    @FXML
-    private TableColumn<?, ?> clientColumn;
-
-    @FXML
-    private TableColumn<?, ?> tableColumn;
-
-    @FXML
-    private TableColumn<?, ?> totalColumn;
-
-    @FXML
-    private TableColumn<?, ?> openDateColumn;
-
-    @FXML
-    private TableColumn<?, ?> closeDate;
-
-    @FXML
-    private Button newOrderButton;
-
-    @FXML
-    private Button updateOrderButton;
-
-    @FXML
-    private Button deleteOrderButton;
-
-    @FXML
-    private Button terminateOrderButton;
-
-    @FXML
-    private Button backButton;
+public class OrderItemProductView extends AbstractJavaFXGriffonView {
 
     @FXML
     private CheckBox idCheck;
 
     @FXML
-    private CheckBox userCheck;
+    private CheckBox descriptionCheck;
 
     @FXML
-    private CheckBox clientCheck;
+    private TableView<?> orderItemTableView;
 
     @FXML
-    private CheckBox tableCheck;
+    private TableColumn<?, ?> descriptionColumn;
+
+    @FXML
+    private TableColumn<?, ?> idColumn;
+
+    @FXML
+    private TableColumn<?, ?> providerColumn;
+
+    @FXML
+    private TableColumn<?, ?> productTypeColumn;
+
+    @FXML
+    private TableColumn<?, ?> priceColumn;
 
     @FXML
     private Button searchButton;
 
     @FXML
-    private TextField orderIdSearchTxt;
+    private TextField idSearchTxt;
 
     @FXML
-    private TextField clientSearchTxt;
+    private TextField descriptionSearchTxt;
 
     @FXML
-    private TextField userSearchTxt;
+    private Button selectButton;
 
     @FXML
-    private TextField tableSearchTxt;
+    private Button cancelButton;
 
-    private OrderController controller;
+    private OrderItemProductController controller;
 
     private OrderModel model;
 
     @MVCMember
-    public void setController(@Nonnull OrderController controller) {
+    public void setController(@Nonnull OrderItemProductController controller) {
         this.controller = controller;
     }
 
@@ -116,7 +86,7 @@ public class OrderView extends AbstractJavaFXGriffonView {
         stage.setMinWidth(1300);
 
         stage.sizeToScene();
-        getApplication().getWindowManager().attach(WindowUtil.ORDER, stage);
+        getApplication().getWindowManager().attach(WindowUtil.ORDER_ITEM_PRODUCT, stage);
         stage.show();
     }
 
@@ -140,19 +110,11 @@ public class OrderView extends AbstractJavaFXGriffonView {
 
     private void setListners() {
         idCheck.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            orderIdSearchTxt.setDisable(!newValue);
+            idSearchTxt.setDisable(!newValue);
         });
 
-        userCheck.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            userSearchTxt.setDisable(!newValue);
-        });
-
-        clientCheck.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            clientSearchTxt.setDisable(!newValue);
-        });
-
-        tableCheck.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            tableSearchTxt.setDisable(!newValue);
+        descriptionCheck.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            descriptionSearchTxt.setDisable(!newValue);
         });
     }
 }

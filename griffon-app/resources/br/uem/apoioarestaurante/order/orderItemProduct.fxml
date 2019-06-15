@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import griffon.javafx.support.fontawesome.FontAwesomeIcon?>
+<?import griffon.javafx.support.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<TitledPane collapsible="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="720.0" prefWidth="1280.0" text="Orders Page"
+            JavaFXUtils.i18nKey="ApoioARestaurante.OrderItemProductPage.OrderItemProductPage.TitledPane"
+            xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="br.uem.apoioarestaurante.order.OrderItemProductView">
+    <content>
+        <AnchorPane>
+            <children>
+                <TitledPane collapsible="false" prefWidth="2000.0" text="Filters" AnchorPane.leftAnchor="21.0"
+                            AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="19.0"
+                            JavaFXUtils.i18nKey="ApoioARestaurante.OrderItemProductPage.Filters.TitledPane">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="1215.0">
+                            <children>
+                                <GridPane hgap="20.0" layoutX="14.600000381469727" layoutY="6.0" vgap="5.0"
+                                          AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-3.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                    </rowConstraints>
+                                    <children>
+                                        <CheckBox fx:id="idCheck" mnemonicParsing="false" text="ID"
+                                                  JavaFXUtils.i18nKey="ApoioARestaurante.OrderItemProductPage.ID.CheckBox"/>
+                                        <CheckBox fx:id="descriptionCheck" mnemonicParsing="false" text="Description"
+                                                  GridPane.rowIndex="1"
+                                                  JavaFXUtils.i18nKey="ApoioARestaurante.OrderItemProductPage.Description.CheckBox"/>
+                                    </children>
+                                </GridPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+
+                <TableView fx:id="orderItemTableView" layoutX="40.6" layoutY="139.6" prefHeight="250.0"
+                           prefWidth="1217.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="21.0"
+                           AnchorPane.topAnchor="120.0">
+                    <columns>
+                        <TableColumn fx:id="descriptionColumn" prefWidth="75.0" text="Descrition"
+                                     JavaFXUtils.i18nKey="ApoioARestaurante.OrderItemProductPage.Description.TableColumn"/>
+                        <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID"
+                                     JavaFXUtils.i18nKey="ApoioARestaurante.OrderItemProductPage.ID.TableColumn"/>
+                        <TableColumn fx:id="providerColumn" prefWidth="75.0" text="Provider"
+                                     JavaFXUtils.i18nKey="ApoioARestaurante.OrderItemProductPage.Provider.TableColumn"/>
+                        <TableColumn fx:id="productTypeColumn" prefWidth="75.0" text="Product Type"
+                                     JavaFXUtils.i18nKey="ApoioARestaurante.OrderItemProductPage.ProductType.TableColumn"/>
+                        <TableColumn fx:id="priceColumn" prefWidth="75.0" text="Price"
+                                     JavaFXUtils.i18nKey="ApoioARestaurante.OrderItemProductPage.Price.TableColumn"/>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                </TableView>
+
+                <TitledPane collapsible="false" layoutX="21.0" layoutY="525.0" prefHeight="80.0" prefWidth="1238.0"
+                            text="Search" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="21.0"
+                            AnchorPane.topAnchor="400.0"
+                            JavaFXUtils.i18nKey="ApoioARestaurante.OrderItemProductPage.Search.TitledPane">
+                    <content>
+                        <AnchorPane>
+                            <children>
+                                <Button fx:id="searchButton" layoutX="1176.0" layoutY="20.0" mnemonicParsing="false"
+                                        text="Search" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                        AnchorPane.topAnchor="0.0" JavaFXUtils.griffonActionId="search"
+                                        JavaFXUtils.i18nKey="ApoioARestaurante.OrderItemProductPage.Search.Button">
+                                    <graphic>
+                                        <FontAwesomeIcon fontAwesome="FA_SEARCH" iconSize="32"/>
+                                    </graphic>
+                                </Button>
+                                <HBox layoutX="14.0" layoutY="14.0" spacing="10.0" AnchorPane.leftAnchor="10.0">
+                                    <children>
+                                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                            <children>
+                                                <Label text="ID"
+                                                       JavaFXUtils.i18nKey="ApoioARestaurante.OrderItemProductPage.ID.Label"/>
+                                                <TextField fx:id="idSearchTxt" disable="true"/>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                            <children>
+                                                <Label text="Description"
+                                                       JavaFXUtils.i18nKey="ApoioARestaurante.OrderItemProductPage.Description.Label"/>
+                                                <TextField fx:id="descriptionSearchTxt" disable="true"/>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+
+                <HBox alignment="CENTER" layoutX="655.0" layoutY="226.0" spacing="1.0" AnchorPane.bottomAnchor="19.0"
+                      AnchorPane.rightAnchor="21.0">
+                    <children>
+                        <Button fx:id="selectButton" mnemonicParsing="false" text="Select"
+                                JavaFXUtils.griffonActionId="select"
+                                JavaFXUtils.i18nKey="ApoioARestaurante.OrderItemProductPage.Select.Button">
+                            <graphic>
+                                <FontAwesomeIcon fontAwesome="FA_CHECK_SQUARE_O" iconSize="32"/>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel"
+                                JavaFXUtils.griffonActionId="cancel"
+                                JavaFXUtils.i18nKey="ApoioARestaurante.OrderItemProductPage.Cancel.Button">
+                            <graphic>
+                                <FontAwesomeIcon fontAwesome="FA_BAN" iconSize="32"/>
+                            </graphic>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+        </AnchorPane>
+    </content>
+</TitledPane>

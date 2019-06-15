@@ -37,21 +37,21 @@
                                 JavaFXUtils.griffonActionId="newClient"
                                 JavaFXUtils.i18nKey="ApoioARestaurante.ClientPage.NewClient.Button">
                             <graphic>
-                                <FontAwesomeIcon fontAwesome="FA_FILE" iconSize="32"/>
+                                <FontAwesomeIcon fontAwesome="FA_FILE_O" iconSize="32"/>
                             </graphic>
                         </Button>
                         <Button fx:id="updateClientButton" mnemonicParsing="false" text="Update"
                                 JavaFXUtils.griffonActionId="updateClient"
                                 JavaFXUtils.i18nKey="ApoioARestaurante.ClientPage.UpdateClient.Button">
                             <graphic>
-                                <FontAwesomeIcon fontAwesome="FA_PENCIL_SQUARE" iconSize="32"/>
+                                <FontAwesomeIcon fontAwesome="FA_PENCIL_SQUARE_O" iconSize="32"/>
                             </graphic>
                         </Button>
                         <Button fx:id="deleteClientButton" mnemonicParsing="false" text="Delete"
                                 JavaFXUtils.griffonActionId="deleteClient"
                                 JavaFXUtils.i18nKey="ApoioARestaurante.ClientPage.DeleteClient.Button">
                             <graphic>
-                                <FontAwesomeIcon fontAwesome="FA_TRASH" iconSize="32"/>
+                                <FontAwesomeIcon fontAwesome="FA_TRASH_O" iconSize="32"/>
                             </graphic>
                         </Button>
                     </children>
@@ -60,7 +60,7 @@
                         AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="21.0" JavaFXUtils.griffonActionId="back"
                         JavaFXUtils.i18nKey="ApoioARestaurante.ClientPage.Back.Button">
                     <graphic>
-                        <FontAwesomeIcon fontAwesome="FA_ARROW_LEFT" iconSize="32"/>
+                        <FontAwesomeIcon fontAwesome="FA_ARROW_CIRCLE_O_LEFT" iconSize="32"/>
                     </graphic>
                 </Button>
                 <TitledPane collapsible="false" layoutX="21.0" layoutY="505.0" prefHeight="80.0" prefWidth="1238.0"

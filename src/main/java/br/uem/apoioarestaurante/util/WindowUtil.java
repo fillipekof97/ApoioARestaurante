@@ -11,4 +11,8 @@ public class WindowUtil {
     public static final String CLIENT_MAINTENANCE = "clientMainetenanceWindow";
 
     public static final String ORDER = "orderWindow";
+
+    public static final String ORDER_MAINTENANCE = "orderMaintenanceWindow";
+
+    public static final String ORDER_ITEM_PRODUCT = "orderItemProductWindow";
 }

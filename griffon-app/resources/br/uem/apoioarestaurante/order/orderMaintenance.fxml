@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import griffon.javafx.support.fontawesome.FontAwesomeIcon?>
+<?import griffon.javafx.support.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<TitledPane collapsible="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="720.0" prefWidth="1280.0" text="Orders Maintenance Page"
+            JavaFXUtils.i18nKey="ApoioARestaurante.OrderMaintenancePage.OrderMaintenancePage.TitledPane"
+            xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="br.uem.apoioarestaurante.order.OrderMaintenanceView">
+    <content>
+        <AnchorPane>
+            <children>
+                <HBox layoutX="14.0" layoutY="14.0" spacing="10.0" AnchorPane.leftAnchor="21.0"
+                      AnchorPane.topAnchor="19.0">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                            <children>
+                                <Label text="ID" JavaFXUtils.i18nKey="ApoioARestaurante.OrderMaintenancePage.ID.Label"/>
+                                <TextField fx:id="orderIdSearchTxt"/>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                            <children>
+                                <Label text="Client"
+                                       JavaFXUtils.i18nKey="ApoioARestaurante.OrderMaintenancePage.Client.Label"/>
+                                <TextField fx:id="clientSearchTxt"/>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="191.0" layoutY="10.0" spacing="10.0">
+                            <children>
+                                <Label text="User"
+                                       JavaFXUtils.i18nKey="ApoioARestaurante.OrderMaintenancePage.User.Label"/>
+                                <TextField fx:id="userSearchTxt"/>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="391.0" layoutY="10.0" spacing="10.0">
+                            <children>
+                                <Label text="Table"
+                                       JavaFXUtils.i18nKey="ApoioARestaurante.OrderMaintenancePage.Table.Label"/>
+                                <TextField fx:id="tableSearchTxt"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </HBox>
+                <TitledPane collapsible="false" layoutX="841.0" layoutY="38.6" prefHeight="55.0" prefWidth="300.0"
+                            text="Order Type" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="19.0"
+                            JavaFXUtils.i18nKey="ApoioARestaurante.OrderMaintenancePage.OrderType.TitledPane">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <fx:define>
+                                    <ToggleGroup fx:id="orderTypeGroup"/>
+                                </fx:define>
+                                <RadioButton fx:id="deliveryRadio" layoutX="9.600000381469727"
+                                             layoutY="6.599999904632568" mnemonicParsing="false" text="Delivery"
+                                             toggleGroup="$orderTypeGroup"
+                                             JavaFXUtils.i18nKey="ApoioARestaurante.OrderMaintenancePage.Delivery.RadioButton">
+                                </RadioButton>
+                                <RadioButton fx:id="localRadio" layoutX="93.60000038146973" layoutY="6.599999904632568"
+                                             mnemonicParsing="false" text="Local" toggleGroup="$orderTypeGroup"
+                                             JavaFXUtils.i18nKey="ApoioARestaurante.OrderMaintenancePage.Local.RadioButton">
+                                </RadioButton>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+                <HBox alignment="CENTER_LEFT" layoutX="31.0" layoutY="85.0" prefHeight="50.0" prefWidth="295.0"
+                      spacing="10.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="85.0">
+                    <children>
+                        <Label prefHeight="75.0" prefWidth="104.0" text="Open Date"
+                               JavaFXUtils.i18nKey="ApoioARestaurante.OrderMaintenancePage.OpenDate.Label"/>
+                        <DatePicker fx:id="openDateDatePicker"/>
+                    </children>
+                </HBox>
+                <TitledPane collapsible="false" layoutX="40.6" layoutY="169.6" prefHeight="335.0" prefWidth="1217.0"
+                            text="Order's Itens" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="30.0"
+                            JavaFXUtils.i18nKey="ApoioARestaurante.OrderMaintenancePage.OrdersItens.TitledPane"
+                            AnchorPane.topAnchor="160.0">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1215.0">
+                            <children>
+                                <TableView fx:id="OrderItemTableView" layoutX="19.6" layoutY="19.6" prefHeight="225.0"
+                                           prefWidth="1177.0" AnchorPane.bottomAnchor="74.0"
+                                           AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"
+                                           AnchorPane.topAnchor="10.0">
+                                    <columns>
+                                        <TableColumn fx:id="itemOrderItemIDColumn" prefWidth="75.0" text="ID"
+                                                     JavaFXUtils.i18nKey="ApoioARestaurante.OrderMaintenancePage.OrderItemID.TableColumn"/>
+                                        <TableColumn fx:id="itemOrderIdColumn" prefWidth="75.0" text="ID Order"
+                                                     JavaFXUtils.i18nKey="ApoioARestaurante.OrderMaintenancePage.OrderID.TableColumn"/>
+                                        <TableColumn fx:id="itemProductColumn" prefWidth="75.0" text="Product"
+                                                     JavaFXUtils.i18nKey="ApoioARestaurante.OrderMaintenancePage.ItemProduct.TableColumn"/>
+                                        <TableColumn fx:id="itemQtdColumn" prefWidth="75.0" text="Qtd"
+                                                     JavaFXUtils.i18nKey="ApoioARestaurante.OrderMaintenancePage.Qtd.TableColumn"/>
+                                        <TableColumn fx:id="itemTotalColumn" prefWidth="75.0" text="Total"
+                                                     JavaFXUtils.i18nKey="ApoioARestaurante.OrderMaintenancePage.ItemTotal.TableColumn"/>
+                                    </columns>
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                                    </columnResizePolicy>
+                                </TableView>
+                                <HBox alignment="CENTER" layoutX="655.0" layoutY="226.0" spacing="1.0"
+                                      AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="10.0">
+                                    <children>
+                                        <Button fx:id="addButton" mnemonicParsing="false" text="Add"
+                                                JavaFXUtils.griffonActionId="add"
+                                                JavaFXUtils.i18nKey="ApoioARestaurante.OrderMaintenancePage.Add.Button">
+                                            <graphic>
+                                                <FontAwesomeIcon fontAwesome="FA_FILE_O" iconSize="32"/>
+                                            </graphic>
+                                        </Button>
+                                        <Button fx:id="removeButton" mnemonicParsing="false" text="Remove"
+                                                JavaFXUtils.griffonActionId="remove"
+                                                JavaFXUtils.i18nKey="ApoioARestaurante.OrderMaintenancePage.Remove.Button">
+                                            <graphic>
+                                                <FontAwesomeIcon fontAwesome="FA_TRASH_O" iconSize="32"/>
+                                            </graphic>
+                                        </Button>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </TitledPane>
+                <HBox alignment="CENTER" layoutX="655.0" layoutY="226.0" spacing="1.0" AnchorPane.bottomAnchor="19.0"
+                      AnchorPane.rightAnchor="38.0">
+                    <children>
+                        <Button fx:id="saveButton" mnemonicParsing="false" text="Save"
+                                JavaFXUtils.griffonActionId="save"
+                                JavaFXUtils.i18nKey="ApoioARestaurante.ClientMaintenance.Save.Button">
+                            <graphic>
+                                <FontAwesomeIcon fontAwesome="FA_FLOPPY_O" iconSize="32"/>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel"
+                                JavaFXUtils.griffonActionId="cancel"
+                                JavaFXUtils.i18nKey="ApoioARestaurante.OrderMaintenancePage.Cancel.Button">
+                            <graphic>
+                                <FontAwesomeIcon fontAwesome="FA_BAN" iconSize="32"/>
+                            </graphic>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+        </AnchorPane>
+    </content>
+</TitledPane>

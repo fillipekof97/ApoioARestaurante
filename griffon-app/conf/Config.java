@@ -8,7 +8,7 @@ import static griffon.util.CollectionUtils.map;
 import static java.util.Arrays.asList;
 
 public class Config extends AbstractMapResourceBundle {
-    
+
     @Override
     protected void initialize(@Nonnull Map<String, Object> entries) {
         map(entries)
@@ -37,6 +37,16 @@ public class Config extends AbstractMapResourceBundle {
                                 .e("model", "br.uem.apoioarestaurante.order.OrderModel")
                                 .e("view", "br.uem.apoioarestaurante.order.OrderView")
                                 .e("controller", "br.uem.apoioarestaurante.order.OrderController")
+                        )
+                        .e(MVCGroupUtil.ORDER_MAINTENANCE_CONFIG_ID, map()
+                                .e("model", "br.uem.apoioarestaurante.order.OrderModel")
+                                .e("view", "br.uem.apoioarestaurante.order.OrderMaintenanceView")
+                                .e("controller", "br.uem.apoioarestaurante.order.OrderMaintenanceController")
+                        )
+                        .e(MVCGroupUtil.ORDER_ITEM_PRODUCT_CONFIG_ID, map()
+                                .e("model", "br.uem.apoioarestaurante.order.OrderModel")
+                                .e("view", "br.uem.apoioarestaurante.order.OrderItemProductView")
+                                .e("controller", "br.uem.apoioarestaurante.order.OrderItemProductController")
                         )
                 );
     }

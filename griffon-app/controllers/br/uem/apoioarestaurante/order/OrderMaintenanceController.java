@@ -20,7 +20,7 @@ import static griffon.util.CollectionUtils.map;
  * @author Maicon
  */
 @ArtifactProviderFor(GriffonController.class)
-public class OrderController extends AbstractGriffonController {
+public class OrderMaintenanceController extends AbstractGriffonController {
 
     private OrderModel model;
 
@@ -31,26 +31,26 @@ public class OrderController extends AbstractGriffonController {
 
     @ControllerAction
     @Threading(Threading.Policy.INSIDE_UITHREAD_ASYNC)
-    public void back() {
-        application.getWindowManager().hide(WindowUtil.ORDER);
-        application.getWindowManager().show(WindowUtil.MAIN_PAGE);
+    public void cancel() {
+        getMvcGroup().destroy();
+        application.getWindowManager().hide(WindowUtil.ORDER_MAINTENANCE);
     }
 
     @ControllerAction
     @Threading(Threading.Policy.INSIDE_UITHREAD_ASYNC)
-    public void newOrder() {
+    public void add() {
         try {
             MVCGroupManager manager = application.getMvcGroupManager();
-            MVCGroup group = manager.findGroup(MVCGroupUtil.ORDER_MAINTENANCE_CREATE_NAME);
+            MVCGroup group = manager.findGroup(MVCGroupUtil.ORDER_ITEM_PRODUCT_NAME);
 
             if (group == null) {
-                manager.createMVC(MVCGroupUtil.ORDER_MAINTENANCE_CONFIG_ID,
-                        MVCGroupUtil.ORDER_MAINTENANCE_CREATE_NAME,
+                manager.createMVC(MVCGroupUtil.ORDER_ITEM_PRODUCT_CONFIG_ID,
+                        MVCGroupUtil.ORDER_ITEM_PRODUCT_NAME,
                         (Map) map().e("model", getMvcGroup().getModel()));
             } else {
                 group.destroy();
-                manager.createMVC(MVCGroupUtil.ORDER_MAINTENANCE_CONFIG_ID,
-                        MVCGroupUtil.ORDER_MAINTENANCE_CREATE_NAME,
+                manager.createMVC(MVCGroupUtil.ORDER_ITEM_PRODUCT_CONFIG_ID,
+                        MVCGroupUtil.ORDER_ITEM_PRODUCT_NAME,
                         (Map) map().e("model", getMvcGroup().getModel()));
             }
         } catch (Exception ex) {

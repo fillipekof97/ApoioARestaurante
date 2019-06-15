@@ -19,4 +19,14 @@ public class MVCGroupUtil {
     public static final String ORDER_CONFIG_ID = "order";
 
     public static final String ORDER_NAME = "order";
+
+    public static final String ORDER_MAINTENANCE_CONFIG_ID = "orderMaintenance";
+
+    public static final String ORDER_MAINTENANCE_CREATE_NAME = "orderMaintenanceCreate";
+
+    public static final String ORDER_MAINTENANCE_UPDATE_NAME = "orderMaintenanceUpdate";
+
+    public static final String ORDER_ITEM_PRODUCT_CONFIG_ID = "orderItemProduct";
+
+    public static final String ORDER_ITEM_PRODUCT_NAME = "orderItemProduct";
 }
